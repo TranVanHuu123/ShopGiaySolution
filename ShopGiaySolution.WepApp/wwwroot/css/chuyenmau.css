@@ -1,0 +1,72 @@
+﻿:root {
+    /* --transition-delay:0.3s; */
+    --transition-effect: 0.25s cubic-bezier(.25,-0.59,.82,1.66) 0.3s;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+}
+
+.switch-toggle {
+    width: 90px;
+    height: 50px;
+    appearance: none;
+    background: #83d8ff;
+    border-radius: 26px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-effect);
+    box-shadow: inset 0px 0px 16px rgba(0, 0, 0, 0.3);
+}
+
+    .switch-toggle::before {
+        content: "";
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        background: #efe2bf;
+        border-radius: 50%;
+        transition: var(--transition-effect);
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .switch-toggle:checked {
+        background: #749dd6;
+    }
+
+        .switch-toggle:checked:before {
+            left: 40px;
+        }
+
+/* chinh mau */
+body {
+    transition: var(--transition-effect);
+}
+
+    body.dark {
+        background: #111;
+    }
+
+.container__note.whitee {
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.container__list-product-noboder.whitepro {
+    color: #fff;
+}
+
+.container-banner.white_banner {
+    color: #fff;
+}
+
+.container__news.white_new {
+    color: #fff;
+}

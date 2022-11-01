@@ -1,0 +1,204 @@
+﻿@model HomeViewModel
+@using ShopGiaySolution.ViewModels.Catalog.Products
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container-img-photo img {
+        height: 900px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .container__product-item-img--sale .container__item--img--sale3 {
+        position: absolute;
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    .container__list-product-noboder:hover .container__item--img--sale3 {
+        transform: translateX(15px);
+        opacity: 1;
+    }
+
+    .container__list-product-noboder:hover .container__item--img--sale1 {
+        opacity: 0;
+    }
+</style>
+<main style="margin-top:30px" class="container">
+    <div! class="grid wide">
+        <div class="no">
+        </div>
+        <div>
+            <div class="row">
+                <div class="col l-6 ">
+                    <div class="container-img-photo" data-aos="fade-right" data-aos-deslay="1500" >
+                        <img class="img-photo1" src="/img/phoi-do-voi-giay-sneaker-cao-co-nam-4-3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col l-6 ">
+                    <div class="container-img-photo" data-aos="fade-left" data-aos-deslay="1000">
+                        <img class="img-photo2" src="/img/149985035141027-11.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+          
+            <div style="margin-top:46px" class="container__note">
+                <h1 class="note-product">Sản phẩm bán chạy</h1>
+            </div>
+
+            <!-- list san pham ban chay container -->
+            <div class="container__list ">
+                <div class="row  ">
+                     @{
+                    List<List<ProductVm>> featuredProducts = new List<List<ProductVm>>();
+                    List<ProductVm> featuredPart = new List<ProductVm>();
+                      }
+                    @for (int index = 0; index < Model.FeaturedProducts!.Count; index++)
+                {
+                    featuredPart.Add(Model.FeaturedProducts[index]);
+                    if (featuredPart.Count == 6 || Model.FeaturedProducts.Count < 6)
+                    {
+                        featuredProducts.Add(featuredPart);
+                        featuredPart = new List<ProductVm>();
+                    }
+
+                }
+                    @for (int index = 0; index < featuredProducts.Count; index++)
+                    {
+                       foreach (var item in featuredProducts[index])
+                       {
+                             var url = $"/{culture}/{_loc["productUrl"]}/{item.Id}";
+                             <div class="col l-4 iteam @(index == 0?"active":"") ">
+                            <div class="  container__list-product-noboder "  data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-deslay="2000">
+
+                                <div class="container__product-item-img--sale">
+                                    <img style="transition: 0.7s;" class="container__item--img--sale" src="@(Configuration["BaseAddress"]+item.ThumbnailImage)" alt="@item.Name">
+                                </div>
+                                <h4 class="container__product-item-name--sale">@item.Name</h4>
+
+                                <div class="container__product-item-price-discount--sale">
+                                    <span class="container__product-discount--sale">@item.Price.ToString()</span>
+                                </div>
+
+                                <div class="container--view-iteam">
+                                    <a class="container--view-iteam-link" href="@url" localize-content>Xem sản phẩm</a>
+                                </div>
+                            </div>
+                        </div>
+                       }
+                    }
+
+                  
+                  
+                    <div class="container__list-view-all">
+                        <a class="container__note-view-all" href="">Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-banner" data-aos="fade-left"  data-aos-deslay="1500">
+                <img class="container-banner-img" src="/img/Track-6_Suede_Moonphase_1500x800.jpg" alt="Anh giày">
+                <div class="banner-note">
+                    <div class="container-banner-note">
+                        <h3>OUTLET SALE</h3>
+                        <p>Danh mục sản phẩm bán giá tốt chỉ được bán ở kênh Online Only , chúng đã từng làm mưa làm gió suốt thời gian qua.</p>
+                    </div>
+                    <div class="container-banner-note">
+                        <h3>ALL BLACK</h3>
+                        <p>Mặc dù có khá nhiều màu sắc được ứng dụng rất nhiều , nhưng sắc đen lúc nào cũng mang đến sự hấp dẫn.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- list sieu khuyen mai -->
+            <hr>
+            <div class="container__note">
+                <h1 class="note-product">SALE OFF</h1>
+            </div>
+
+            <div class="container__list container__list-discount">
+                <div class="row">
+                  
+                    @foreach (var item in Model.LatestProducts! )
+                    {
+                        var url = $"/{culture}/{_loc["productUrl"]}/{item.Id}";
+                         <div class="col l-4">
+                            <div class="  container__list-product-noboder " data-aos="zoom-in" data-aos-deslay="1500">
+                                <div class="container__list-produc-discount">
+                                    <span class="discount discount1">-30%</span>
+                                </div>
+                                <div class="container__product-item-img--sale">
+                                    <img style="transition: 0.7s;" class="container__item--img--sale1" src="@(Configuration["BaseAddress"]+item.ThumbnailImage)" alt="@item.Name">
+                                    <img class="container__item--img--sale3" src="/img2/pixlr.png" alt="Hình ảnh">
+                                </div>
+                                <h4 class="container__product-item-name--sale">@item.Name</h4>
+
+                                <div class="container__product-item-price-discount--sale">
+                                    <span class="container__product-price--sale">@item.Price đ</span>
+                                    <span class="container__product-discount--sale">1000000 đ</span>
+                                </div>
+
+                                <div class="container--view-iteam">
+                                    <a class="container--view-iteam-link" href="@url">Xem sản phẩm</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    }
+                       
+                      
+                    
+                    
+
+
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <div class="container__news">
+                <div class="row">
+                    <div class=" col l-8">
+                        <h1>Tin tức và bài viết</h1>
+                        <div class="row">
+                            <div class=" col l-6 container__news--note" data-aos="fade-right" >
+                                <img src="/img/vans-1.jpg" alt="Anh giày">
+                                <span>MUSEUM OF PEACE & QUIET TÁI HỢP CÙNG VAULT BY VANS CHO CÁC SẢN PHẨM OG AUTHENTIC LX</span>
+                                <p>Sau lần hợp tác cuối cùng của OG Style 36s và OG Mule LXs , Museum of Peace & Quiet và VAULT BY VANS đã tái hợp với sản phẩm mới mang hai màu của OG AUTHENTIC LX đến HBX.</p>
+                            </div>
+                            <div class="col l-6 container__news--note" data-aos="fade-left">
+                                <img src="/img/vans-4.jpg" alt="Anh giày">
+                                <span>VANS SKATEBOARDING SIGNATURE SỰ HỢP TÁC VỚI LIZZIE ARMANTO</span>
+                                <p>Vận động viên trượt ván chuyên nghiệp Lizzie Armanto - một trong những người phụ nữ đột phá nhất trong lịch sử ván trượt đã lựa chọn tính bền bỉ làm kim chỉ nam cho sản phẩm của riêng mình.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col l-6 container__news--note"data-aos="fade-up-right">
+                                <img src="/img/pos.jpg" alt="Anh giày" >
+                                <span>MUSEUM OF PEACE & QUIET TÁI HỢP CÙNG VAULT BY VANS CHO CÁC SẢN PHẨM OG AUTHENTIC LX</span>
+                                <p>Sau lần hợp tác cuối cùng của OG Style 36s và OG Mule LXs , Museum of Peace & Quiet và VAULT BY VANS đã tái hợp với sản phẩm mới mang hai màu của OG AUTHENTIC LX đến HBX.</p>
+                            </div>
+                            <div class="col l-6 container__news--note" data-aos="fade-up-left">
+                                <img src="/img/vans-5.jpg" alt="Anh giày">
+                                <span>VANS SKATEBOARDING SIGNATURE SỰ HỢP TÁC VỚI LIZZIE ARMANTO</span>
+                                <p>Vận động viên trượt ván chuyên nghiệp Lizzie Armanto - một trong những người phụ nữ đột phá nhất trong lịch sử ván trượt đã lựa chọn tính bền bỉ làm kim chỉ nam cho sản phẩm của riêng mình.</p>
+                            </div>
+                        </div>
+                        <div class="container__list-view-all">
+                            <a class="container__note-view-all" href="">Xem tất cả</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+

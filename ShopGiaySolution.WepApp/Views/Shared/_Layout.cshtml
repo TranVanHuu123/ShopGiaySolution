@@ -1,0 +1,242 @@
+﻿
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+      <title>@ViewData["Title"] -  ShopGiaySolution</title>
+       <meta name="description" content="@ViewData["Description"]">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/css/base.css" rel="stylesheet" />
+    <link href="/css/category.css" rel="stylesheet" />
+    <link href="/css/container.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
+    <link href="/css//grid.css" rel="stylesheet" />
+    <link href="/css/login.css" rel="stylesheet" />
+    <link href="/css/product.css" rel="stylesheet" />
+    <link href="/css/slideShow.css" rel="stylesheet" />
+    <link href="/css/cart.css" rel="stylesheet" />
+    <link href="/css/chuyenmau.css" rel="stylesheet" />
+
+  
+    @*link roll*@
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    @*//*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+    <style>
+        .logout {
+            text-decoration: none;
+            font-size: 1.8rem;
+            color: #747474;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+            .logout:hover {
+                color: #fff;
+            }
+
+        .header__male-iteam {
+            margin-top: 5px;
+        }
+
+
+        /*tongsoluongcarrt*/
+        .totle-cart {
+            display: block;
+            position: absolute;
+            background: #f46e71;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            top: -15px;
+            left: 14px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .icon_cart {
+           
+            display: block;
+            position: relative;
+        }
+
+        .container__note {
+            transition: var(--transition-effect);
+        }
+        .container__list-product-noboder {
+            transition: var(--transition-effect);
+        }
+        .container-banner, .container-banner-note {
+            transition: var(--transition-effect);
+        }
+        .container__news {
+            transition: var(--transition-effect);
+        }
+   
+   
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid wide">
+                <div class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-iteam">
+
+                            <div class="iteam2">
+
+                                <a style="text-decoration:none" href=""> <span class="header__navbar-brand">H&Sneaker</span></a>
+                            </div>
+
+                        </li>
+
+                        <li class="header__navbar-iteam">
+                            <div class="category__search">
+                                <input class="category__input" type="text" placeholder="Nhập tên sản phẩm">
+                                <span class="category__search--icon">
+                                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <a href=""> <span id="CartCount" class="icon_cart"><i class="fa-solid fa-cart-shopping"> <span class="totle-cart"> </span></i></span></a>
+                            <a   class="header__navbar-link" href="/vi/Home/SetCultureCookie?cltr=vi&returnUrl=/vi" localize-content><span>VN</span> </a>
+                            <a  class="header__navbar-link" href="/en/Home/SetCultureCookie?cltr=vi&returnUrl=/en"localize-content><span>EN</span> </a>
+                                                       
+                            <span class="icon_user"> <i class="fa-solid fa-user"></i></span>
+                            
+                               @* <a class="logout" href=""></a>
+                                <a class="logout" href="">Đăng xuất</a>*@
+
+                            @if (User.Identity!.IsAuthenticated)
+                            {
+                                 <form action="/@culture/Account/Logout" method="post">
+                                    <button type="submit" style="display:block;margin-top:-4px;padding-right:0;font-size:1.8rem;color:#747474;background:transparent;border:none;">
+                                        <span class="btn btn-large btn-success"><localize>Logout</localize></span>
+                                    </button>
+                                </form>
+                               
+                            }
+                            else
+                            {
+                                  <a class="header__navbar-link header__navbar-link--separate2" href="/@culture/Account/Login"><localize>Login</localize></a>
+                                <a class="header__navbar-link header__navbar-linkDX" href="">Đăng ký</a>
+                            }
+
+                            
+                               
+
+
+
+                        </li>
+
+                    </ul>
+                </div>
+              
+            </div>
+            @await Component.InvokeAsync("SideBar")
+        </header>
+        
+                         
+        @RenderBody();
+
+
+        <br>
+        <hr>
+        <br>
+        <footer class="footer">
+            <div class="grid wide">
+                <div class="footer__information">
+                    <div class="footer__introduce">
+                        <h2>Giới thiệu</h2>
+                        <p>Chào mừng bạn đến với ngôi nhà H&Sneaker.<br>Nơi tập trung những đôi giày đẹp,phù hợp với mọi người.</p>
+                    </div>
+                    <div class="footer__adress">
+                        <h2>Địa chỉ</h2>
+                        <div class="footer__adress-note">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>82 Cách mạng tháng 8 , Dĩ An , Bình Dương</span>
+                        </div>
+                        <div class="footer__adress-note">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>0356753260</span>
+                        </div>
+                        <div class="footer__adress-note">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>tranvanhuu76@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="footer__Menu">
+                        <h2>Menu</h2>
+                        <div class="footer__Menu-note">
+                            <span>Trang chủ</span>
+                        </div>
+                        <div class="footer__Menu-note">
+                            <span>Giới thiệu</span>
+                        </div>
+                        <div class="footer__Menu-note">
+                            <span>Liên hệ</span>
+                        </div>
+                    </div>
+                    <div class="footer__network">
+                        <div class="class=" footer__network-note">
+                            <h2 class="network-note">Mạng xã hội</h2>
+                        </div>
+                        <div class="footer__network-list">
+                            <div class="footer__network-note ">
+                                <a href="#"><i class="fa-brands fa-facebook footer-icon face"></i></a>
+                            </div>
+                            <div class="footer__network-note ">
+                                <a href="#"><i class="fa-brands fa-telegram footer-icon footer-icon2 telegram"></i></a>
+                            </div>
+                            <div class="footer__network-note ">
+                                <a href="#"><i class="fa-brands fa-twitter footer-icon footer-icon2 twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+        <div id="wrapper">
+            <input type="checkbox" class="switch-toggle" id="light-dark">
+        </div>
+    </div>
+
+  
+    <script src="/js/index.js"></script>
+    <script src="/js/product.js"></script>
+   @* <script src="/js/container2.js"></script>*@
+    <script src="/js/chuyenmau.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop()) {
+                    $('header').addClass('sticky');
+                }
+                else {
+                    $('header').removeClass('sticky');
+                }
+            })
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,307 @@
+﻿
+.header {
+    background-color: #020202;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 1);
+}
+/* header .header .sticky {
+    background: #f1f1f1;
+    
+} */
+.header__navbar {
+    padding-top: 22px;
+}
+
+.header__navbar-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__navbar-iteam {
+    display: flex;
+    position: relative;
+}
+
+.header__navbar-list {
+    margin-top: 0;
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+.header__navbar-link {
+    text-decoration: none;
+    color: #747474;
+    font-size: 1.7rem;
+    display: block;
+}
+
+.icon_user {
+    color: #747474;
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.icon_cart {
+    color: #747474;
+    font-size: 1.5rem;
+    margin-right: 20px;
+}
+
+    .icon_cart:hover {
+        color: #f1f1f1;
+    }
+
+.header__navbar-linkDX {
+    margin-left: 10px;
+}
+
+.header__navbar-hotline {
+    color: #747474;
+    font-size: 1.7rem;
+}
+
+.header__navbar-telephone {
+    color: #d1d1d1;
+    font-size: 1.6rem;
+}
+
+.header__navbar-icon-telephone {
+    color: #747474;
+    font-size: 1.7rem;
+}
+
+.iteam2 {
+    margin-left: 20px;
+}
+
+.brand {
+    margin-left: 335px;
+}
+
+.header__navbar-brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fff;
+    font-size: 3.5rem;
+}
+
+.header__navbar-link--separate2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-right: 1px solid #747474;
+    height: 20px;
+    color: #747474;
+    right: 68px;
+    top: 0;
+}
+/* .header__navbar-link--separate1::after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-right: 1px solid #747474;
+    height: 20px;
+    color:  #747474;
+    right: 120px;
+    top: 0;
+} */
+
+.header__navbar-link--separate2:hover {
+    color: #d1d1d1;
+}
+
+.header__navbar-linkDX:hover {
+    color: #d1d1d1;
+}
+
+/* header màu xám */
+.header-gray {
+    margin-top: 14px;
+    width: 100%;
+    height: 50px;
+    background-color: #dcdcdc;
+}
+
+.header__option {
+    margin-top: 13px;
+    position: relative;
+}
+
+.header__option-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-right: 46px;
+}
+
+.header__option-iteam {
+    display: block;
+    color: #000;
+    margin-top: 18px;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.header__option-link:hover {
+    color: #747474;
+    cursor: pointer;
+}
+
+
+.header__option-iteam:hover {
+    color: #747474;
+    cursor: pointer;
+}
+
+.header__option-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.no {
+    height: 130px;
+}
+/* list cho nam */
+.header__male-list {
+    background-color: #fff;
+    border: 2px solid #747474;
+    border-radius: 3px;
+    width: 180px;
+    height: 190px;
+    padding-left: 0;
+    list-style: none;
+    position: absolute;
+    margin-top: 18px;
+    display: none;
+    animation: headermaleList ease-in 0.2s;
+    will-change: opacity, transform;
+    z-index: 2;
+}
+
+@keyframes headermaleList {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header__option-male-iteam:hover .header__male-list {
+    display: block;
+}
+
+
+.header__male-iteam a {
+    position: relative;
+    border-bottom: 0.2pt solid #f1f1f1;
+    text-decoration: none;
+    display: flex;
+    padding: 12px;
+    width: 100%;
+    color: #747474;
+}
+
+
+
+.header__male-iteam:hover a {
+    background-color: #f1f1f1;
+    color: #020202;
+}
+
+.header__male-list::before {
+    content: " ";
+    border: 15px solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    left: 12px;
+    top: -28px;
+}
+
+.header__male-list::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 90px;
+    left: 0;
+    top: -21px;
+    height: 17px;
+}
+
+/* ////////////////////// */
+/* list cho nữ */
+.header__female-list {
+    background-color: #fff;
+    border: 2px solid #747474;
+    border-radius: 3px;
+    width: 180px;
+    height: 190px;
+    padding-left: 0;
+    list-style: none;
+    position: absolute;
+    margin-top: 18px;
+    display: none;
+    animation: headermaleList ease-in 0.2s;
+    will-change: opacity, transform;
+    z-index: 2;
+}
+
+@keyframes headerfemaleList {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header__option-female-iteam:hover .header__female-list {
+    display: block;
+}
+
+
+
+.header__female-iteam {
+    position: relative;
+    border-bottom: 0.2pt solid #f1f1f1;
+}
+
+.header__female-iteam-first {
+    margin-top: 13px;
+}
+
+.header__female-iteam:hover .header__female-iteam-name {
+    background-color: #f1f1f1;
+    color: #020202;
+}
+
+.header__female-list::before {
+    content: " ";
+    border: 15px solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    left: 12px;
+    top: -28px;
+}
+
+.header__female-list::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 90px;
+    left: 0;
+    top: -21px;
+    height: 17px;
+}

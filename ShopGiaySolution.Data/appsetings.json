@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "ShopGiaySolutionDb": "Server=.;Database=ShopGiaySolution;Trusted_Connection=True;"
+  }
+}

@@ -1,0 +1,81 @@
+﻿@model ProductCategoryViewModel
+@{
+    ViewData["Title"] = Model.Category!.Name + (Model.Products!.PageIndex == 1 ? "" : " - " + _loc["Page"] + " " + Model.Products.PageIndex);
+    ViewData["Description"] = Model.Category.Name + (Model.Products.PageIndex == 1 ? "" : " - " + _loc["Page"] + " " + Model.Products.PageIndex);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = CultureInfo.CurrentCulture;
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+<div class="category">
+    <!-- <div class="category__search">
+            <input class="category__input" type="text" placeholder="Nhập tên sản phẩm">
+            <span class="category__search--icon">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </span>
+    </div> -->
+    <div class="category__list-product">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-3" >
+                    <nav class=" category__nav " >
+                        <ul class="category__list">
+                            <h3! class="category__nav-heading"> Giá</h3!>
+                            <li class="category__item" >
+                                <a href="#" class="category__item-link">1.000.000đ - 2.000.000đ</a>
+                            </li>
+                            <hr!>
+                            <li class="category__item">
+                                <a href="#" class="category__item-link">2.000.000đ - 3.000.000đ</a>
+                            </li>
+                            <hr!>
+                            <li class="category__item">
+                                <a href="#" class="category__item-link">3.000.000đ - 4.000.000đ</a>
+                            </li>
+                            <hr!>
+                            <li class="category__item">
+                                <a href="#" class="category__item-link">4.000.000đ - 5.000.000đ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col category__list-iteam l-9">
+                    <div class="row ">
+                       @for (int i=0 ; i< Model.Products!.Items!.Count; i++)
+                        {
+                            var item = Model.Products!.Items![i];
+                            <div class="col l-4 category__list category--product ">
+                                <div class="  container__list-product-noboder  ">
+                                    <div class="container__product-item-img--sale category--product-img">
+                                        <img style="transition: 0.5s;" class="container__item--img--sale" src="@(Configuration["BaseAddress"]+item.ThumbnailImage)" alt="@item.Name">
+                                    </div>
+                                    <h4 class="container__product-item-name--sale"> @item.Name</h4>
+
+                                    <div class="container__product-item-price-discount--sale">
+                                        <span class="container__product-price--sale">@item.Price.ToString() đ</span>
+
+                                    </div>
+
+                                    <div class="container--view-iteam">
+                                        <a class="container--view-iteam-link" href="/@culture.Name/@_loc["products"]/@item.Id"><localize>Xem sản phẩm</localize></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("Pager", Model.Products)
+    <div class="category__product">
+
+    </div>
+</div>
+

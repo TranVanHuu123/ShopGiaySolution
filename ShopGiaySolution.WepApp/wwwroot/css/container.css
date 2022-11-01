@@ -1,0 +1,247 @@
+.container__note{
+   text-align: center;
+   font-size: 2rem;
+    height: 70px;
+    width: 410px;
+    border: 2px solid black;
+     margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+
+/* list san pham */
+.container__list{
+    margin-top: 23px;
+    
+}
+.container__list-product{
+    border-radius: 3px;
+    position: relative;
+    margin: 25px 0;
+}
+.container__product-item-img{
+    margin-left: 0;
+   
+}
+.container__item-img{
+    height: 207px;
+    width: 100%;
+    margin-top: 10px;
+    object-fit: cover;
+    object-position: auto;
+  
+  
+}
+.container__product-item-name{
+    font-size: 1.7rem;
+    line-height: 2rem;
+    margin-top: -23px;
+    margin-left: 11px;
+    position: relative;
+    z-index: 4;
+}
+.container__product-item-start{
+    margin-top: -16px;
+    font-size: 1.7rem;
+    margin-top: -10px;
+    margin-left: 10px;
+}
+.container__product-item-price{
+    font-size: 1.7rem;
+    margin-left: 10px;
+}
+
+.container__list-product:hover  {
+    border: 1px solid;
+    opacity: 0.8;
+   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 2);
+}
+.container__product-item-img:hover{
+    opacity: 0.8;
+}
+ .container__product-item-name :hover{
+    opacity: 0.8;
+ }
+ .container__product-item-price:hover{
+    opacity: 0.8;
+ }
+.container__list-product:hover .container--view-iteam {
+    bottom: 50%;
+    opacity: 1;
+}
+.container--view-iteam-link{
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: black;
+    text-align: center;
+    width: 136px;
+    height: 33px;
+    font-size: 1.7rem;
+    line-height: 2rem;
+    padding-top: 6px;
+    border-radius: 3px;
+}
+.container--view-iteam {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s;
+    opacity: 0;
+}
+/* xem tất cả */
+.iteam{
+    margin-top: 20px;
+}
+.container__list-view-all{
+    margin: 20px auto;
+    border: 2px solid #747474;
+    position: relative;
+    text-align: center;
+    width: 136px;
+    height: 35px;
+    font-size: 1.7rem;
+    line-height: 2rem;
+    padding-top: 6px; 
+    transition: all 0.3s linear;
+}
+
+.container__note-view-all{
+    text-decoration: none;
+    display: block;
+    color: #747474 ;
+}
+.container__note-view-all:hover{
+    color: #fff;
+}
+.container__list-view-all:hover{
+    background-color: black;
+}
+
+.container-banner-img{
+   height: 600px;
+   width: 100%;
+   object-fit: cover;
+   object-position: auto;
+}
+.banner-note{
+    display: flex;
+}
+.container-banner-note{
+    margin: 0 55px;
+}
+.container-banner-note h3{
+    font-size: 4rem;
+}
+.container-banner-note p{
+    font-size: 1.5rem;
+    line-height: 20px;
+}
+/* san pham giam giá */
+
+.container__product-item-img--sale{
+    background: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container__product-item-img--sale img{
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: auto;
+    padding-bottom: 40px;
+    transition: 0.5s;
+}
+.container__list-product-noboder:hover .container__item--img--sale{
+    transform: scaleX(-1);
+}
+.container__product-item-name--sale{
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+
+}
+.container__product-item-name--sale:hover{
+    color: #817171;
+}
+.container__list-discount{
+    margin-bottom: 40px;
+}
+.container__list-produc-discount{
+    
+   background-color: #747474;
+   height: 50px;
+   width: 50px;
+   border-radius: 50%;
+   position: relative;
+   top: 50px;
+}
+.discount{
+   color: #fff;
+   font-size: 1.6rem;
+    position: absolute;
+    left: 7px;
+    top: 17px;
+}
+.container__list-product-noboder{
+    
+    position: relative;
+}
+.black{
+    color: black;
+}
+
+.container__list-product-noboder:hover img{
+    transform: scale(1.1);
+}
+.container__list-product-noboder:hover .container--view-iteam {
+    bottom: 50%;
+    opacity: 1;
+}
+.container__product-item-price-discount--sale{
+   font-size: 1.7rem;
+   text-align: center;
+}
+.container__product-price--sale{
+    text-decoration: line-through;
+    font-weight: 400;
+}
+.container__product-discount--sale{
+    margin-left: 10px;
+    font-weight: 700;
+
+}
+
+.container__news{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.container__news h1{
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.container__news--note span{
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: block;
+    margin-top: 20px;
+}
+.container__news--note p{
+    font-size: 1.5rem;
+    line-height: 20px;
+}
+.container__news--note img{
+    object-fit: cover;
+    object-position: auto;
+    width: 100%;
+}
+
+
+
+

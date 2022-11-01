@@ -1,0 +1,88 @@
+﻿
+@model List<ShopGiaySolution.ViewModels.Catalog.Categories.CategoryVm>
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+
+  <div class="header-gray">
+                    <div class="header__option">
+                        <ul class="header__option-list">
+                            <li class="header__option-iteam">
+                                <a class="header__option-link" href="">TRANG CHỦ</a>
+                            </li>
+                            <li class="header__option-iteam">
+                                <a class="header__option-link" href="" >TIN TỨC</a>
+                            </li>
+                          
+                            <li class="header__option-iteam header__option-male-iteam">
+
+                                <span>NAM</span>
+                                <span><i class="fa-solid fa-angle-down"></i></span>
+                                <ul class="header__male-list">
+                                     
+
+
+
+                                      @{
+                                          var parents = Model.Where(x => x.ParentId == null);
+                                       }
+                                      @for (int index = 0; index < parents.Count(); index++)
+                                    {
+                                        var parent = parents.ElementAt(index);
+                                         var children = Model.Where(x => x.ParentId == parent.Id);
+                                         if (children.Any())
+                                        {
+                                            @foreach (var item in children)
+                                            {
+                                                  <li class="header__male-iteam ">
+                                                    <a  class=""  href="/@culture/@_loc["categoryUrl"]/@item.Id">@item.Name</a>
+                                                  
+
+                                                  </li>     
+                                                 
+                                            }
+                                        }
+                                        else
+                                        {
+                                             <li><a href="/@culture/@_loc["categoryUrl"]/@parent.Id">@parent.Name</a></li>
+                                        }                                    
+                                    }                                  
+                                </ul>
+
+                            </li>
+                            <li class="header__option-iteam header__option-female-iteam">
+                                <span>NỮ</span>
+                                <span><i class="fa-solid fa-angle-down"></i></span>
+
+                                <ul class="header__female-list ">
+                                    @{
+                                          var parentss = Model.Where(x => x.ParentId == null);
+                                       }
+                                      @for (int index = 0; index < parentss.Count(); index++)
+                                    {
+                                        var parentt = parentss.ElementAt(index);
+                                         var children = Model.Where(x => x.ParentId == parentt.Id);
+                                         if (children.Any())
+                                        {
+                                            @foreach (var item in children)
+                                            {
+                                                  <li class="header__male-iteam ">
+                                                    <a class="" href="/@culture/@_loc["categoryUrl"]/@item.Id">@item.Name</a>
+                                                  </li>                                       
+                                            }
+                                        }
+                                        else
+                                        {
+                                             <li><a href="/@culture/@_loc["categoryUrl"]/@parentt.Id">@parentt.Name</a></li>
+                                        }                                    
+                                    }                   
+
+                                </ul>
+                            </li>
+                            <li class="header__option-iteam"><a class="header__option-link" href="" >LIÊN HỆ</a></li>
+                        </ul>
+                    </div>
+                </div>
+

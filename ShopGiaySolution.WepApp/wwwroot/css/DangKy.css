@@ -1,0 +1,95 @@
+﻿<style >
+body {
+    background-image: url('../../content/assets/img/black-1072366_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: cover;
+    object-position: auto;
+}
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    position: absolute;
+    left: 600px;
+    width: 360px;
+    min-height: 100px;
+    padding: 0 24px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label {
+    text-align: left;
+}
+
+.form-control {
+    height: 20px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1rem;
+    width: 340px;
+}
+
+.submit {
+    outline: none;
+    background-color: #747474;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.heading {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 2rem;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.note__brand {
+    font-size: 2rem;
+    color: #fff;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.text {
+    margin-left: -287px;
+}
+
+.submit:hover {
+    background-color: black;
+}
+
+</style >

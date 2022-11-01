@@ -1,0 +1,120 @@
+﻿@model ProductDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = CultureInfo.CurrentCulture;
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+
+<style>
+    .product__cart {
+        width:100%;
+    }
+        .group__quan-size {
+        display: flex;
+        margin-bottom: 50px;
+    }
+    .product-quantity {
+        width: 140px;
+        border: 1px solid;
+        height: 40px;
+        font-size: 2rem;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .quantity_pro {
+        margin-right: 100px;
+    }
+
+    .quan {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    .si {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    .size_pro select {
+        width: 140px;
+        border: 1px solid;
+        height: 40px;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+</style>
+<main class="product">
+    <div class="grid wide">
+
+        <div class="row ">
+            <div class="col l-6 " data-aos="fade-right">
+                <div class="product__image">
+                    <img src="@(Configuration["BaseAddress"] + Model.Product!.ThumbnailImage)" alt="Anh hình">
+                </div>
+                <div class="row">
+                    <div class="col l-4">
+                        <div class="img--small">
+                            <img src="~/img2/pixlr-bg-result (4).png" alt="Anh hình">
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="img--small">
+                            <img src="~/img2/pixlr-bg-result (5).png" alt="Anh hình">
+                        </div>
+                    </div>
+                    <div class="col l-4">
+                        <div class="img--small">
+                            <img src="~/img2/pixlr-bg-result (6).png" alt="Anh hình">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col l-6 " data-aos="fade-left">
+                <div class="product__name">
+                    <h1>@Model.Product.Name</h1>
+                </div>
+                <hr>
+
+                <div class="product__price">
+
+                    <span>@String.Format("{0:0,0}", Model.Product.Price) đ</span>
+                </div>
+                <hr>
+                <div class="product__note">
+                    <p>@Model.Product.Description</p>
+                </div>
+                <div class="group__quan-size">
+                    <div class="quantity_pro">
+                        <h1 class="quan">Số lượng</h1>
+                        <input type="number" id="ipQuantity" class="form-control product-quantity" value="1" />
+                    </div>
+                    <div class="size_pro">
+                        <h1 class="si">Size</h1>
+                        <select class="size" name="" id="">
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="product__cart">
+                    <a style="text-decoration:none" href="#" id="addtocart"> <h2>Thêm vào giỏ hàng</h2></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
