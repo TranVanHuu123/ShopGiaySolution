@@ -2,6 +2,7 @@
 @{
     var culture = CultureInfo.CurrentCulture.Name;
 }
+
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
 <!DOCTYPE html>
 <html lang="en">
@@ -88,6 +89,8 @@
     </style>
 </head>
 <body>
+    <input type="hidden" id="hidCulture" value="@culture"/>
+    <input type="hidden" id="hidBaseAddress" value="@Configuration["BaseAddress"]"/>
     <div class="app">
         <header class="header">
             <div class="grid wide">
@@ -110,7 +113,7 @@
                                 </span>
                             </div>
 
-                            <a href=""> <span id="CartCount" class="icon_cart"><i class="fa-solid fa-cart-shopping"> <span class="totle-cart"> </span></i></span></a>
+                            <a href="/@culture/cart"> <span id="CartCount" class="icon_cart"><i class="fa-solid fa-cart-shopping"> <span class="totle-cart" id="lbl_number_of_item">0</span></i></span></a>
                             <a   class="header__navbar-link" href="/vi/Home/SetCultureCookie?cltr=vi&returnUrl=/vi" localize-content><span>VN</span> </a>
                             <a  class="header__navbar-link" href="/en/Home/SetCultureCookie?cltr=vi&returnUrl=/en"localize-content><span>EN</span> </a>
                                                        
@@ -131,7 +134,7 @@
                             else
                             {
                                   <a class="header__navbar-link header__navbar-link--separate2" href="/@culture/Account/Login"><localize>Login</localize></a>
-                                <a class="header__navbar-link header__navbar-linkDX" href="">Đăng ký</a>
+                                <a class="header__navbar-link header__navbar-linkDX" href="/@culture/Account/Register">Đăng ký</a>
                             }
 
                             
@@ -220,8 +223,17 @@
     <script src="/js/product.js"></script>
    @* <script src="/js/container2.js"></script>*@
     <script src="/js/chuyenmau.js"></script>
+  
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+     <script src="/js/site.js"></script>
+     <script>
+         var site = new SiteController();
+            site.initialize();
+     </script>
+
+
     <script>
         AOS.init();
     </script>

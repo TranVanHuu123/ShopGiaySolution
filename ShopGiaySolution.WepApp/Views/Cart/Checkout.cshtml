@@ -1,0 +1,259 @@
+﻿@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+<style>
+    .pay{
+        height:600px;
+    }
+    .product-cart-input a {
+        display: block;
+        text-decoration: none;
+        display: block;
+        color: black;
+        width: 100px;
+        height: 40px;
+        background: #f15e2c;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .submit-update {
+        margin-left:50px;
+      
+      
+        color: black;
+        width: 100px;
+        height: 40px;
+        background: #f15e2c;
+        font-size: 1.8rem;
+       
+       
+        border: none;
+    }
+    .note-si{
+        margin-left:-95px;
+    }
+    .td-last{
+        display:block;
+        border-bottom:1px solid;
+        width:100%;
+        margin-top:30px;
+        margin-left:-70px;
+        padding-top:10px;
+        padding-bottom:20px;
+    }
+    .note-pay {
+        margin-left: 22px;
+        margin-right: 5px;
+    }
+
+        .note-pay p {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+    .pay-note-sdt {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+        .pay-note-sdt span {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+    .pay-input-sdt {
+        text-align: center;
+        margin-bottom: 20px;
+      
+    }
+
+        .pay-input-sdt input {
+            height: 30px;
+            font-size: 2rem;
+            padding-left: 10px;
+            width: 160px;
+            border: 1px solid;
+            margin-left:-5px;
+        }
+
+    .pay-footer {
+        display: flex;
+    }
+
+        .pay-footer a {
+            display: block;
+            width: 90px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f15e2c;
+            height: 40px;
+            text-decoration: none;
+            font-size: 2rem;
+            color: #fff;
+            border-radius: 2px;
+            margin-left: 22px;
+        }
+
+            .pay-footer a:hover {
+                background: #f48849;
+            }
+
+        .pay-footer input {
+            margin-left: 10px;
+            display: block;
+            width: 250px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f15e2c;
+            height: 40px;
+            text-decoration: none;
+            font-size: 2rem;
+            color: #fff;
+            border-radius: 2px;
+            border: none;
+        }
+
+            .pay-footer input:hover {
+                background: #f48849;
+            }
+    .continue{
+        font-size:2.5rem;
+        color:#000000;
+        display:block;
+        margin-top:20px;
+        
+    }
+    .submit-update{
+        margin-right: 10px;
+    }
+    </style>
+    @if (TempData["SuccessMsg"] != null)
+{
+    <span class="alert alert-success">@TempData["SuccessMsg"]</span>
+}
+else
+{
+    <main class="listcart">
+            <div class="grid wide ">
+                <hr>
+                <div class="row">
+                    <div class="col l-8">
+                        <div class="listcart-head">
+                            <h2>Giỏ hàng</h2>
+                        </div>
+                        <div class="product">         
+                           <table>
+                             @foreach (var item in Model.CartItems!)
+                             {
+                                    <tr class="product-cart-main">
+                                        <td >
+                                            <div class="product-cart-img">
+                                                <img src="@(Configuration["BaseAddress"] + item.Image)" alt="">
+                                            </div>
+                                       
+                                        </td>
+                                        <td class="product-cart-name">
+                                            <h1>@item.Name </h1>
+                                            <span>@item.Price VND</span>
+                                        </td>
+                                        <td class="product-cart-price">
+                                            <span>Giá : </span>
+                                            <span>@(item.Quantity*item.Price) vnd</span>
+                                        </td>
+                                        <td class="product-cart-note">
+                                           
+                                      
+                                        </td>
+                                       
+                                 
+                                    </tr>
+                             }
+                              
+                              
+                          
+                           </table>
+                            
+                        </div>
+                  
+                    </div>
+                    <div class="col l-4">
+                        <div class="pay">
+                            <div class="pay-header">
+                                <h1>Đơn hàng</h1>
+                            </div>
+                            <hr>
+                            <div class="pay-price">
+                                <span>Đơn hàng</span>
+                                <span>1800000vnd</span>
+                            </div>
+                            <div class="pay-reduce">
+                                <span>Giảm</span>
+                                <span>0vnd</span>
+                            </div>
+                            <div class="total">
+                                <span>Tổng tiền</span>
+                                <span>@Model.CartItems.Sum(x=>x.Quantity*x.Price).ToString() VND</span>
+                            </div>
+                          
+
+
+                                  <form class="form-horizontal" action="/@culture/Cart/Checkout" method="post">
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">Name </label>
+                        <div class="controls">
+                            <input style="width: 200px;border: 1px solid;" type="text" id="inputCountry" asp-for="CheckoutModel.Name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">Address </label>
+                        <div class="controls">
+                            <input style="width: 200px;border: 1px solid;" type="text" id="inputCountry" asp-for="CheckoutModel.Address" placeholder="Address">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">Email </label>
+                        <div class="controls">
+                            <input style="width: 200px;border: 1px solid;" type="text" id="inputCountry" asp-for="CheckoutModel.Email" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">PhoneNumber </label>
+                        <div class="controls">
+                            <input style="width: 200px;border: 1px solid;" type="text" id="inputCountry" asp-for="CheckoutModel.PhoneNumber" placeholder="PhoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Mua hàng </button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main> 
+
+}
+
+    
+

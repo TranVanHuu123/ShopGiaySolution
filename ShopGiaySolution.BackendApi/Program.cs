@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ShopGiaySolution.ApiIntegration;
 using ShopGiaySolution.Application.Catalog.Categories;
 using ShopGiaySolution.Application.Catalog.Products;
 using ShopGiaySolution.Application.Common;
@@ -39,6 +40,8 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IRoleService, RoleService>();
 builder.Services.AddTransient<ILanguageService, LanguageService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+
+
 
 
 

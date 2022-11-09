@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShopGiaySolution.ApiIntegration\ShopGiaySolution.ApiIntegration.csproj" />
     <ProjectReference Include="..\ShopGiaySolution.Application\ShopGiaySolution.Application.csproj" />
     <ProjectReference Include="..\ShopGiaySolution.Data\ShopGiaySolution.Data.csproj" />
     <ProjectReference Include="..\ShopGiaySolution.Utilities\ShopGiaySolution.Utilities.csproj" />

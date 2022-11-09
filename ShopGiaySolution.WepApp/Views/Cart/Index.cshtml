@@ -1,0 +1,201 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+@section scripts{
+    <script src="~/js/Cart.js"></script>
+    <script>
+        var cartController = new CartController();
+        cartController.initialize();
+    </script>
+}
+
+
+<style>
+    .pay{
+        height:600px;
+    }
+    .product-cart-input a {
+        display: block;
+        text-decoration: none;
+        display: block;
+        color: black;
+        width: 100px;
+        height: 40px;
+        background: #f15e2c;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .submit-update {
+        margin-left:50px;
+      
+      
+        color: black;
+        width: 100px;
+        height: 40px;
+        background: #f15e2c;
+        font-size: 1.8rem;
+       
+       
+        border: none;
+    }
+    .note-si{
+        margin-left:-95px;
+    }
+    .td-last{
+        display:block;
+        border-bottom:1px solid;
+        width:100%;
+        margin-top:30px;
+        margin-left:-70px;
+        padding-top:10px;
+        padding-bottom:20px;
+    }
+    .note-pay {
+        margin-left: 22px;
+        margin-right: 5px;
+    }
+
+        .note-pay p {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+    .pay-note-sdt {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+        .pay-note-sdt span {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+    .pay-input-sdt {
+        text-align: center;
+        margin-bottom: 20px;
+      
+    }
+
+        .pay-input-sdt input {
+            height: 30px;
+            font-size: 2rem;
+            padding-left: 10px;
+            width: 160px;
+            border: 1px solid;
+            margin-left:-5px;
+        }
+
+    .pay-footer {
+        display: flex;
+    }
+
+        .pay-footer a {
+            display: block;
+            width: 90px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f15e2c;
+            height: 40px;
+            text-decoration: none;
+            font-size: 2rem;
+            color: #fff;
+            border-radius: 2px;
+            margin-left: 22px;
+        }
+
+            .pay-footer a:hover {
+                background: #f48849;
+            }
+
+        .pay-footer input {
+            margin-left: 10px;
+            display: block;
+            width: 250px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f15e2c;
+            height: 40px;
+            text-decoration: none;
+            font-size: 2rem;
+            color: #fff;
+            border-radius: 2px;
+            border: none;
+        }
+
+            .pay-footer input:hover {
+                background: #f48849;
+            }
+    .continue{
+        font-size:2.5rem;
+        color:#000000;
+        display:block;
+        margin-top:20px;
+        
+    }
+    .submit-update{
+        margin-right: 10px;
+    }
+</style>
+   <main class="listcart">
+           
+            <div class="grid wide ">
+                <hr>
+                <div class="row">
+                    <div class="col l-8">
+                      
+                           <div class="listcart-head">
+                            <h2>Giỏ hàng</h2>
+                             </div>
+                               <div class="product" id="tbl_cart"> 
+                                    <div id="cart_body">
+                                    </div>
+                               </div>
+                      
+                  
+                    </div>
+                    <div class="col l-4">
+                        <div class="pay">
+                            <div class="pay-header">
+                                <h1>Đơn hàng</h1>
+                            </div>
+                            <hr>
+                            <div class="pay-price">
+                                <span>Đơn hàng</span>
+                                <span id="lbl_total"> VND</span>
+                            </div>
+                            <div class="pay-reduce">
+                                <span>Giảm</span>
+                                <span>0vnd</span>
+                            </div>
+                            <div class="total">
+                                <span>Tổng tiền</span>
+                                  <span id="lbl_total"> VND</span>
+                            </div>
+                         
+                            <div class="pay-footer">
+                               
+                                <a href="/@culture/Cart/Checkout" class="btn btn-success"> Thanh toán </a>
+                            </div>
+
+
+
+
+                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main> 
+
+

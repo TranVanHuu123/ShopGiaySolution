@@ -9,6 +9,8 @@ namespace ShopGiaySolution.Utilities.Constants
     public class SystemConstants
     {
         public const string MainConectionString = "ShopGiaySolutionDb";
+        public const string CartSession = "CartSession";
+
         public class AppSettings
         {
             public const string DefaultLanguageId = "DefaultLanguageId";
